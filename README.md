@@ -3,7 +3,7 @@
   <h1 align="center">Wingpanel Places Indicator</h1>
   <h3 align="center">Manage disks, volumes, places from the panel</h3>
     <a href="https://elementary.io">
-        <img src="https://ellie-commons.github.io/community-badge.svg" alt="Made for elementary OS">
+        <img src="https://elly-code.github.io/community-badge.svg" alt="Made for elementary OS">
     </a>
 </div>
 

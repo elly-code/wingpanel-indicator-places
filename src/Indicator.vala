@@ -37,7 +37,7 @@ namespace Places {
             Gtk.IconTheme.get_default ().add_resource_path ("/io/elementary/desktop/wingpanel/places");
             volume_monitor = GLib.VolumeMonitor.get ();
 
-            settings = new GLib.Settings ("io.github.ellie_commons.indicator-places");
+            settings = new GLib.Settings ("io.github.elly_code.indicator-places");
             settings.bind ("visible", this, "visible", GLib.SettingsBindFlags.DEFAULT);
         }
 

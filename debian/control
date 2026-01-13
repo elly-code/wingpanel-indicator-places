@@ -1,4 +1,4 @@
-Source: io.github.ellie-commons.wingpanel-indicator-places
+Source: io.github.elly-code.wingpanel-indicator-places
 Section: x11
 Priority: optional
 Maintainer: dirli <litandrej85@gmail.com>
@@ -10,10 +10,10 @@ Build-Depends: debhelper (>= 10.5.1),
                meson (>= 0.58),
                valac (>= 0.40.0)
 Standards-Version: 1.0.0
-Homepage: https://github.com/ellie-commons/wingpanel-indicator-places
+Homepage: https://github.com/elly-code/wingpanel-indicator-places
 Rules-Requires-Root: no
 
-Package: io.github.ellie-commons.wingpanel-indicator-places
+Package: io.github.elly-code.wingpanel-indicator-places
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Enhances: io.elementary.wingpanel
