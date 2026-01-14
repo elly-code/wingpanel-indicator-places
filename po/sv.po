@@ -1,0 +1,78 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the xplaces package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: xplaces\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-17 19:44+0200\n"
+"PO-Revision-Date: 2026-01-14 15:55+0100\n"
+"Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
+"Language-Team: \n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.8\n"
+
+#: src/Widgets/BookmarksItem.vala:23
+msgid "Bookmarks"
+msgstr "Bokmärken"
+
+#: src/Widgets/MountItem.vala:28 src/Widgets/VolumeItem.vala:30
+msgid "Devices"
+msgstr "Enheter"
+
+#. iter = new ListItem (_("Recent"), "document-open-recent");
+#. iter.iter_button.clicked.connect (() => {open_directory (file_from_path ("recent:///"));});
+#. std_listbox.add (iter);
+#: src/Widgets/MountItem.vala:32 src/Widgets/Popover.vala:79
+#: src/Widgets/VolumeItem.vala:34
+msgid "Network"
+msgstr "Nätverk"
+
+#: src/Widgets/MountItem.vala:36 src/Widgets/VolumeItem.vala:38
+msgid "Other"
+msgstr "Annat"
+
+#: src/Widgets/MountItem.vala:59
+msgid "Eject"
+msgstr "Mata ut"
+
+#: src/Widgets/MountItem.vala:61
+msgid "Unmount"
+msgstr "Avmontera"
+
+#: src/Widgets/MountItem.vala:77
+msgid "Error while ejecting device"
+msgstr "Fel vid utmatning av enhet"
+
+#: src/Widgets/MountItem.vala:92
+msgid "Error while unmounting volume"
+msgstr "Fel vid avmontering av volym"
+
+#: src/Widgets/Popover.vala:63
+msgid "Home Folder"
+msgstr "Hemmapp"
+
+#. iter = new ListItem (_("Computer"), "computer");
+#. iter.iter_button.clicked.connect (() => {open_directory (file_from_path ("computer:///"));});
+#. std_listbox.add (iter);
+#: src/Widgets/Popover.vala:71
+msgid "Root"
+msgstr "Rot"
+
+#: src/Widgets/Popover.vala:83
+msgid "Trash"
+msgstr "Papperskorg"
+
+#: src/Widgets/VolumeItem.vala:59
+msgid "Error while mounting volume"
+msgstr "Fel vid montering av volym"
+
+#: src/Widgets/StandardItem.vala:23
+msgid "Places"
+msgstr "Platser"
