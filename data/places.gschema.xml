@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
+  <enum id="DisplayWidget">
+    <value nick='icon' value='0'/>
+	<value nick='label' value='1'/>
+	<value nick='both' value='2'/>
+  </enum>
+
   <schema path="/io/github/elly_code/indicator-places/" id="io.github.elly_code.indicator-places">
-		<key name="visible" type="b">
-			<default>true</default>
-			<summary>Whether indicator is visible</summary>
-			<description>Hide indicator if set to false. It is still running, just hidden</description>
-		</key>
+	<key name="visible" type="b">
+		<default>true</default>
+		<summary>Whether indicator is visible</summary>
+		<description>Hide indicator if set to false. It is still running, just hidden</description>
+	</key>
+		<key enum="DisplayWidget" name="display-widget">
+	    <default>'icon'</default>
+		<summary>Whether indicator shows icon, label, or both</summary>
+		<description>Whether the indicator widget reveals an icon, a label, or both icon and label</description>
+	</key>
 	</schema>
 </schemalist>
