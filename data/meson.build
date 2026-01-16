@@ -5,7 +5,7 @@ install_data ('10-enable-mount.rules',
 
 gresource = gnome.compile_resources (
     'as-resources',
-    join_paths (meson.project_name () + '.gresource.xml'),
+    'places.gresource.xml',
     source_dir: 'data',
     c_name: 'as'
 )

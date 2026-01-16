@@ -44,10 +44,11 @@ namespace Places.Widgets {
             }
             icon.margin_end = 5;
 
-            Gtk.Label label = new Gtk.Label (elem_label);
-            label.set_max_width_chars (25);
-            label.set_ellipsize (Pango.EllipsizeMode.END);
-            label.set_halign (Gtk.Align.START);
+            Gtk.Label label = new Gtk.Label (elem_label) {
+                max_width_chars = 25,
+                ellipsize = Pango.EllipsizeMode.END,
+                halign = Gtk.Align.START
+            };
 
             inner_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
             inner_box.pack_start (icon, false, false, 0);

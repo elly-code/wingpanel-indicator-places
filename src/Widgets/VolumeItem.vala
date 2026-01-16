@@ -24,7 +24,7 @@ namespace Places.Widgets {
 
         public VolumeItem (GLib.Volume volume) {
             string elem_image, _category_name;
-            switch (volume.get_identifier("class")) {
+            switch (volume.get_identifier ("class")) {
                 case "device":
                     elem_image = "drive-harddisk";
                     _category_name = _("Devices");

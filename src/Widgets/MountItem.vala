@@ -42,27 +42,31 @@ namespace Places.Widgets {
             category_name = _category_name;
             this.mount = mount;
 
-            Gtk.Button unmount_button = new Gtk.Button.from_icon_name ("media-eject-symbolic", Gtk.IconSize.MENU);
-            unmount_button.set_relief (Gtk.ReliefStyle.NONE);
-            unmount_button.set_can_focus (false);
-            unmount_button.set_halign (Gtk.Align.END);
+            var unmount_button = new Gtk.Button.from_icon_name ("media-eject-symbolic", Gtk.IconSize.MENU) {
+                relief = Gtk.ReliefStyle.NONE,
+                can_focus = false,
+                halign = Gtk.Align.END
+            };
 
-            unmount_button.clicked.connect (()=> {
-                if (mount.can_eject ()) {
-                    do_eject ();
-                } else {
-                    do_unmount ();
-                }
-            });
+            unmount_button.clicked.connect (on_button_clicked);
 
             if (mount.can_eject ()) {
-                unmount_button.set_tooltip_text (_("Eject"));
+                unmount_button.tooltip_text = _("Eject %s").printf (mount.get_name ());
             } else {
-                unmount_button.set_tooltip_text (_("Unmount"));
+                unmount_button.tooltip_text = _("Unmount %s").printf (mount.get_name ());
             }
 
             overlay.add_overlay (unmount_button);
         }
+
+        private void on_button_clicked () {
+            if (mount.can_eject ()) {
+                do_eject ();
+            } else {
+                do_unmount ();
+            }
+        }
+
         /*
          * Ejects a mount
          */
