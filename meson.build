@@ -38,6 +38,7 @@ shared_module (
   'src/Widgets/Popover.vala',
   'src/Widgets/VolumeItem.vala',
   'src/Widgets/StandardItem.vala',
+  'src/Enums/MountClass.vala',
   gresource,
   dependencies: [
     dependency ('glib-2.0'),

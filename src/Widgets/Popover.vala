@@ -212,7 +212,7 @@ namespace Places.Widgets {
             vol_listbox.add (volume_item);
         }
 
-        public void add_mount (GLib.Mount mount, string? mount_class) {
+        public void add_mount (GLib.Mount mount, Places.MountClass mount_class) {
             MountItem mount_item = new MountItem (mount, mount_class);
             mount_item.iter_button.clicked.connect (() => {
                 open_directory (mount.get_root ());

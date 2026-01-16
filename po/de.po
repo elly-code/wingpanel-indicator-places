@@ -56,14 +56,14 @@ msgstr "Fehler beim Aushängen des Datenträgers"
 
 #: src/Widgets/Popover.vala:63
 msgid "Home Folder"
-msgstr "Ordner \"Home"
+msgstr "Persönlicher Ordner"
 
 #. iter = new ListItem (_("Computer"), "computer");
 #. iter.iter_button.clicked.connect (() => {open_directory (file_from_path ("computer:///"));});
 #. std_listbox.add (iter);
 #: src/Widgets/Popover.vala:71
 msgid "Root"
-msgstr "Wurzel"
+msgstr "Dateisystem"
 
 #: src/Widgets/Popover.vala:83
 msgid "Trash"

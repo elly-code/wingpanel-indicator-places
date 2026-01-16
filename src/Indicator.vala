@@ -103,7 +103,7 @@ public class Places.Indicator : Wingpanel.Indicator {
                 if (mount == null) {
                     main_widget.add_volume (volume);
                 } else {
-                    main_widget.add_mount (mount, volume.get_identifier ("class"));
+                    main_widget.add_mount (mount, MountClass.from_string (volume.get_identifier ("class")));
                 }
             }
         }
@@ -117,7 +117,7 @@ public class Places.Indicator : Wingpanel.Indicator {
             if (mount == null) {
                 main_widget.add_volume (volume);
             } else {
-                main_widget.add_mount (mount, volume.get_identifier ("class"));
+                main_widget.add_mount (mount, MountClass.from_string (volume.get_identifier ("class")));
             }
         }
         // Add mounts without volumes
@@ -128,9 +128,9 @@ public class Places.Indicator : Wingpanel.Indicator {
 
             GLib.File root = mount.get_default_location ();
             if (!root.is_native ()) {
-                main_widget.add_mount (mount, "network");
+                main_widget.add_mount (mount, Places.MountClass.NETWORK);
             } else {
-                main_widget.add_mount (mount, "device");
+                main_widget.add_mount (mount, Places.MountClass.NETWORK);
             }
         }
 

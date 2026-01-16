@@ -20,26 +20,10 @@ namespace Places.Widgets {
     public class MountItem : ListItem {
         private GLib.Mount mount;
 
-        public MountItem (GLib.Mount mount, string? mount_class) {
-            string elem_image, _category_name;
-            switch (mount_class) {
-                case "device":
-                    elem_image = "drive-harddisk";
-                    _category_name = _("Devices");
-                    break;
-                case "network":
-                    elem_image = "folder-remote";
-                    _category_name = _("Network");
-                    break;
-                default:
-                    elem_image = "folder";
-                    _category_name = _("Other");
-                    break;
-            }
+        public MountItem (GLib.Mount mount, Places.MountClass mount_class) {
+            base (mount.get_name (), mount_class.to_icon (), mount.get_icon ());
 
-            base (mount.get_name (), elem_image, mount.get_icon ());
-
-            category_name = _category_name;
+            category_name = mount_class.to_name ();
             this.mount = mount;
 
             var unmount_button = new Gtk.Button.from_icon_name ("media-eject-symbolic", Gtk.IconSize.MENU) {
