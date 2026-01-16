@@ -46,7 +46,7 @@ public class Places.Indicator : Wingpanel.Indicator {
 
     public override Gtk.Widget get_display_widget () {
         if (panel_box == null) {
-            panel_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 5);
+            panel_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
 
             var places_icon = new Gtk.Image.from_icon_name ("places", Gtk.IconSize.SMALL_TOOLBAR);
             var places_label = new Gtk.Label (_("Places"));
@@ -65,8 +65,8 @@ public class Places.Indicator : Wingpanel.Indicator {
             };
 
             settings.changed["display-widget"].connect (on_display_setting_changed);
-            panel_box.pack_start (places_icon);
-            panel_box.pack_start (places_label);
+            panel_box.pack_start (icon_revealer);
+            panel_box.pack_start (label_revealer);
         }
 
         return panel_box;
