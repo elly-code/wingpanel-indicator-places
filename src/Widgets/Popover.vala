@@ -19,7 +19,6 @@
 namespace Places.Widgets {
     public class Popover : Gtk.Box {
 
-        private string user_home;
         private Gtk.ListBox user_listbox;
         private Gtk.ListBox std_listbox;
         private Gtk.ListBox vol_listbox;
@@ -30,9 +29,6 @@ namespace Places.Widgets {
             hexpand = true;
             orientation = Gtk.Orientation.HORIZONTAL;
             spacing = 0;
-
-
-            user_home = GLib.Environment.get_home_dir ();
 
             user_listbox = new Gtk.ListBox ();
             user_listbox.set_selection_mode (Gtk.SelectionMode.NONE);
@@ -47,10 +43,16 @@ namespace Places.Widgets {
             vol_listbox.set_selection_mode (Gtk.SelectionMode.NONE);
             vol_listbox.set_header_func (list_header_func);
 
-            Gtk.Separator v_separator = new Gtk.Separator (Gtk.Orientation.VERTICAL);
-            v_separator.margin_start = v_separator.margin_end = 10;
+            // Home, Computer, etc...
+            foreach (var item in StandardPlaces.CHOICES) {
+                ListItem iter = new StandardItem (item.to_name (), item.to_icon ()) {
+                    tooltip_text = item.to_path ()
+                };
+                iter.iter_button.clicked.connect (() => {open_directory (file_from_path (item.to_path ()));});
+                std_listbox.add (iter);
+            };
 
-            add_std_places ();
+            // My_Memes, My_Cat_Pictures, etc...
             add_user_places ();
 
             var left_pane = new Gtk.Box (VERTICAL, 10) {
@@ -63,11 +65,6 @@ namespace Places.Widgets {
 
             left_pane.pack_start (std_listbox);
             left_pane.pack_start (vol_listbox);
-            //attach (std_listbox, 0, 0, 1, 1);
-            //attach (vol_listbox, 0, 1, 1, 1);
-            //attach (v_separator, 1, 0, 1, 2);
-            //attach (user_listbox, 2, 0, 1, 2);
-
 
             var right_pane = new Gtk.Box (VERTICAL, 10) {
                 margin_top = 10,
@@ -80,45 +77,13 @@ namespace Places.Widgets {
             right_pane.pack_start (user_listbox);
 
             pack_start (left_pane);
-            pack_start (v_separator);
+            pack_start (new Gtk.Separator (Gtk.Orientation.VERTICAL));
             pack_start (right_pane);
             show_all ();
         }
 
-        public void add_std_places () {
-            ListItem iter = new StandardItem (_("Home Folder"), "user-home");
-            iter.tooltip_text = "file:" + user_home;
-            iter.iter_button.clicked.connect (() => {open_directory (file_from_path ("file:" + user_home));});
-            std_listbox.add (iter);
-
-            // iter = new ListItem (_("Computer"), "computer");
-            //iter.tooltip_text = "computer:///";
-            // iter.iter_button.clicked.connect (() => {open_directory (file_from_path ("computer:///"));});
-            // std_listbox.add (iter);
-
-            iter = new StandardItem (_("Root"), "computer");
-            iter.tooltip_text = "file:///";
-            iter.iter_button.clicked.connect (() => {open_directory (file_from_path ("file:///"));});
-            std_listbox.add (iter);
-
-            iter = new StandardItem (_("Recent"), "document-open-recent");
-            iter.tooltip_text = "recent:///";
-            iter.iter_button.clicked.connect (() => {open_directory (file_from_path ("recent:///"));});
-            std_listbox.add (iter);
-
-            iter = new StandardItem (_("Network"), "network-workgroup");
-            iter.tooltip_text = "network:///";
-            iter.iter_button.clicked.connect (() => {open_directory (file_from_path ("network:///"));});
-            std_listbox.add (iter);
-
-            iter = new StandardItem (_("Trash"), "user-trash");
-            iter.tooltip_text = "trash:///";
-            iter.iter_button.clicked.connect (() => {open_directory (file_from_path ("trash:///"));});
-            std_listbox.add (iter);
-        }
-
         private void add_user_places () {
-            string bookmarks_filename = GLib.Path.build_filename (user_home, ".config", "gtk-3.0", "bookmarks", null);
+            string bookmarks_filename = GLib.Path.build_filename (GLib.Environment.get_home_dir (), ".config", "gtk-3.0", "bookmarks", null);
             GLib.File bookmarks_file = GLib.File.new_for_path (bookmarks_filename);
 
             if (!bookmarks_file.query_exists ()) {

@@ -18,7 +18,7 @@
 
 namespace Places.Widgets {
     public class ListItem : Gtk.Box {
-        public Gtk.Overlay overlay;
+
         public Gtk.ToolButton iter_button;
         protected Gtk.Box inner_box;
         protected string? category_name = null;
@@ -27,14 +27,12 @@ namespace Places.Widgets {
             orientation = Gtk.Orientation.HORIZONTAL;
             margin_bottom = 5;
             hexpand = true;
+            valign = Gtk.Align.CENTER;
 
             iter_button = new Gtk.ToolButton (null, null);
             iter_button.set_can_focus (false);
 
-            overlay = new Gtk.Overlay ();
-            overlay.add (iter_button);
-
-            pack_start (overlay, true, true, 0);
+            pack_start (iter_button, true, true, 0);
 
             Gtk.Image icon;
             if (elem_icon != null) {
