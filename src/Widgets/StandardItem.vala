@@ -16,11 +16,10 @@
  *
  */
 
-namespace Places.Widgets {
-    public class StandardItem : ListItem {
-        public StandardItem (string elem_name, string img_path) {
-            base (elem_name, img_path);
-            category_name = _("Places");
-        }
+public class Places.Widgets.StandardItem : ListItem {
+    public StandardItem (StandardPlaces place) {
+        base (place.to_name (), place.to_icon ());
+        tooltip_text = place.to_path ();
+        category_name = _("Places");
     }
 }

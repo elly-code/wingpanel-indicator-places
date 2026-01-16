@@ -16,70 +16,68 @@
  *
  */
 
-namespace Places.Widgets {
-    public class MountItem : ListItem {
-        private GLib.Mount mount;
+public class Places.Widgets.MountItem : ListItem {
+    private GLib.Mount mount;
 
-        public MountItem (GLib.Mount mount, Places.MountClass mount_class) {
-            base (mount.get_name (), mount_class.to_icon (), mount.get_icon ());
+    public MountItem (GLib.Mount mount, Places.MountClass mount_class) {
+        base (mount.get_name (), mount_class.to_icon (), mount.get_icon ());
 
-            category_name = mount_class.to_name ();
-            this.mount = mount;
+        category_name = mount_class.to_name ();
+        this.mount = mount;
 
-            var unmount_button = new Gtk.Button.from_icon_name ("media-eject-symbolic", Gtk.IconSize.MENU) {
-                relief = Gtk.ReliefStyle.NONE,
-                halign = Gtk.Align.END
-            };
+        var unmount_button = new Gtk.Button.from_icon_name ("media-eject-symbolic", Gtk.IconSize.MENU) {
+            relief = Gtk.ReliefStyle.NONE,
+            halign = Gtk.Align.END
+        };
 
-            unmount_button.clicked.connect (on_button_clicked);
+        unmount_button.clicked.connect (on_button_clicked);
 
-            if (mount.can_eject ()) {
-                unmount_button.tooltip_text = _("Eject %s").printf (mount.get_name ());
-            } else {
-                unmount_button.tooltip_text = _("Unmount %s").printf (mount.get_name ());
-            }
-
-            //overlay.add_overlay (unmount_button);
-            pack_start (unmount_button);
+        if (mount.can_eject ()) {
+            unmount_button.tooltip_text = _("Eject %s").printf (mount.get_name ());
+        } else {
+            unmount_button.tooltip_text = _("Unmount %s").printf (mount.get_name ());
         }
 
-        private void on_button_clicked () {
-            if (mount.can_eject ()) {
-                do_eject ();
-            } else {
-                do_unmount ();
-            }
-        }
+        //overlay.add_overlay (unmount_button);
+        pack_start (unmount_button);
+    }
 
-        /*
-         * Ejects a mount
-         */
-        private void do_eject () {
-            mount.eject_with_operation.begin (GLib.MountUnmountFlags.NONE, null, null, on_eject);
+    private void on_button_clicked () {
+        if (mount.can_eject ()) {
+            do_eject ();
+        } else {
+            do_unmount ();
         }
+    }
 
-        private void on_eject (GLib.Object? obj, GLib.AsyncResult res) {
-            try {
-                mount.eject_with_operation.end (res);
-            } catch (GLib.Error e) {
-                warning (_("Error while ejecting device"));
-                warning (e.message);
-            }
-        }
-        /*
-         * Unmounts a mount
-         */
-        private void do_unmount () {
-            mount.unmount_with_operation.begin (GLib.MountUnmountFlags.NONE, null, null, on_unmount);
-        }
+    /*
+        * Ejects a mount
+        */
+    private void do_eject () {
+        mount.eject_with_operation.begin (GLib.MountUnmountFlags.NONE, null, null, on_eject);
+    }
 
-        private void on_unmount (GLib.Object? obj, GLib.AsyncResult res) {
-            try {
-                mount.unmount_with_operation.end (res);
-            } catch (GLib.Error e) {
-                warning (_("Error while unmounting volume"));
-                warning (e.message);
-            }
+    private void on_eject (GLib.Object? obj, GLib.AsyncResult res) {
+        try {
+            mount.eject_with_operation.end (res);
+        } catch (GLib.Error e) {
+            warning (_("Error while ejecting device"));
+            warning (e.message);
+        }
+    }
+    /*
+        * Unmounts a mount
+        */
+    private void do_unmount () {
+        mount.unmount_with_operation.begin (GLib.MountUnmountFlags.NONE, null, null, on_unmount);
+    }
+
+    private void on_unmount (GLib.Object? obj, GLib.AsyncResult res) {
+        try {
+            mount.unmount_with_operation.end (res);
+        } catch (GLib.Error e) {
+            warning (_("Error while unmounting volume"));
+            warning (e.message);
         }
     }
 }

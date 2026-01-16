@@ -16,36 +16,34 @@
  *
  */
 
-namespace Places.Widgets {
-    public class VolumeItem : ListItem {
-        public signal void mount_done (GLib.File open_file);
+public class Places.Widgets.VolumeItem : ListItem {
+    public signal void mount_done (GLib.File open_file);
 
-        private GLib.Volume volume;
+    private GLib.Volume volume;
 
-        public VolumeItem (GLib.Volume volume) {
+    public VolumeItem (GLib.Volume volume) {
 
-            var vol_class = MountClass.from_string (volume.get_identifier ("class"));
+        var vol_class = MountClass.from_string (volume.get_identifier ("class"));
 
-            base (volume.get_name (), vol_class.to_icon (), volume.get_icon());
+        base (volume.get_name (), vol_class.to_icon (), volume.get_icon ());
 
-            category_name = vol_class.to_name ();
-            this.volume = volume;
+        category_name = vol_class.to_name ();
+        this.volume = volume;
 
-            iter_button.clicked.connect (on_button_clicked);
-        }
+        iter_button.clicked.connect (on_button_clicked);
+    }
 
-        private void on_button_clicked () {
-            volume.mount.begin(GLib.MountMountFlags.NONE, null, null, on_mount);
-        }
+    private void on_button_clicked () {
+        volume.mount.begin (GLib.MountMountFlags.NONE, null, null, on_mount);
+    }
 
-        private void on_mount (GLib.Object? obj, GLib.AsyncResult res) {
-            try {
-                volume.mount.end(res);
-                mount_done (volume.get_mount().get_root());
-            } catch (GLib.Error e) {
-                warning (_("Error while mounting volume"));
-                warning (e.message);
-            }
+    private void on_mount (GLib.Object? obj, GLib.AsyncResult res) {
+        try {
+            volume.mount.end (res);
+            mount_done (volume.get_mount ().get_root ());
+        } catch (GLib.Error e) {
+            warning (_("Error while mounting volume"));
+            warning (e.message);
         }
     }
 }

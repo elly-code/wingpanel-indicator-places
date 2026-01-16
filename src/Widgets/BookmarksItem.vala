@@ -16,11 +16,10 @@
  *
  */
 
-namespace Places.Widgets {
-    public class BookmarksItem : ListItem {
-        public BookmarksItem (string elem_name, string img_path) {
-            base (elem_name, img_path);
-            category_name = _("Bookmarks");
-        }
+public class Places.Widgets.BookmarksItem : ListItem {
+    public BookmarksItem (string elem_name, string img_path) {
+        base (elem_name, img_path);
+        category_name = _("Bookmarks");
     }
 }
+
