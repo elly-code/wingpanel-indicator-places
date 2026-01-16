@@ -17,7 +17,7 @@
  */
 
 namespace Places.Widgets {
-    public class Popover : Gtk.Grid {
+    public class Popover : Gtk.Box {
 
         private string user_home;
         private Gtk.ListBox user_listbox;
@@ -28,10 +28,10 @@ namespace Places.Widgets {
 
         public Popover () {
             hexpand = true;
-            margin_top = 10;
-            margin_bottom = 10;
-            margin_end = 10;
-            margin_start = 10;
+            orientation = Gtk.Orientation.HORIZONTAL;
+            spacing = 0;
+
+
             user_home = GLib.Environment.get_home_dir ();
 
             user_listbox = new Gtk.ListBox ();
@@ -41,6 +41,7 @@ namespace Places.Widgets {
             std_listbox = new Gtk.ListBox ();
             std_listbox.set_selection_mode (Gtk.SelectionMode.NONE);
             std_listbox.set_header_func (list_header_func);
+            std_listbox.vexpand = false;
 
             vol_listbox = new Gtk.ListBox ();
             vol_listbox.set_selection_mode (Gtk.SelectionMode.NONE);
@@ -51,10 +52,36 @@ namespace Places.Widgets {
 
             add_std_places ();
             add_user_places ();
-            attach (std_listbox, 0, 0, 1, 1);
-            attach (vol_listbox, 0, 1, 1, 1);
-            attach (v_separator, 1, 0, 1, 2);
-            attach (user_listbox, 2, 0, 1, 2);
+
+            var left_pane = new Gtk.Box (VERTICAL, 10) {
+                margin_top = 10,
+                margin_bottom = 10,
+                margin_end = 10,
+                margin_start = 10,
+                hexpand = vexpand = true
+            };
+
+            left_pane.pack_start (std_listbox);
+            left_pane.pack_start (vol_listbox);
+            //attach (std_listbox, 0, 0, 1, 1);
+            //attach (vol_listbox, 0, 1, 1, 1);
+            //attach (v_separator, 1, 0, 1, 2);
+            //attach (user_listbox, 2, 0, 1, 2);
+
+
+            var right_pane = new Gtk.Box (VERTICAL, 10) {
+                margin_top = 10,
+                margin_bottom = 10,
+                margin_end = 10,
+                margin_start = 10,
+                hexpand = vexpand = true
+            };
+
+            right_pane.pack_start (user_listbox);
+
+            pack_start (left_pane);
+            pack_start (v_separator);
+            pack_start (right_pane);
             show_all ();
         }
 
@@ -156,15 +183,14 @@ namespace Places.Widgets {
             }
 
             if (before == null || after == null || prev != next) {
-                Gtk.Label label = new Gtk.Label (GLib.Markup.printf_escaped ("<span font=\"13\">%s</span>", prev)) {
+                var label = new Gtk.Label (prev) {
                     margin_start = 5,
                     margin_end = 5,
                     margin_top = 5,
                     margin_bottom = 10,
-                    halign = Gtk.Align.CENTER,
-                    use_markup = true
+                    halign = Gtk.Align.CENTER
                 };
-                label.set_use_markup (true);
+                label.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
                 before.set_header (label);
 
             } else {

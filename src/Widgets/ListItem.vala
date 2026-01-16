@@ -24,8 +24,9 @@ namespace Places.Widgets {
         protected string? category_name = null;
 
         public ListItem (string elem_label, string elem_img, GLib.Icon? elem_icon = null) {
-            orientation = Gtk.Orientation.VERTICAL;
+            orientation = Gtk.Orientation.HORIZONTAL;
             margin_bottom = 5;
+            hexpand = true;
 
             iter_button = new Gtk.ToolButton (null, null);
             iter_button.set_can_focus (false);

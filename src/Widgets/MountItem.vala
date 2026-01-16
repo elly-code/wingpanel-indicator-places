@@ -28,7 +28,6 @@ namespace Places.Widgets {
 
             var unmount_button = new Gtk.Button.from_icon_name ("media-eject-symbolic", Gtk.IconSize.MENU) {
                 relief = Gtk.ReliefStyle.NONE,
-                can_focus = false,
                 halign = Gtk.Align.END
             };
 
@@ -41,7 +40,7 @@ namespace Places.Widgets {
             }
 
             //overlay.add_overlay (unmount_button);
-            pack_end (unmount_button, false, false, 3);
+            pack_start (unmount_button);
         }
 
         private void on_button_clicked () {

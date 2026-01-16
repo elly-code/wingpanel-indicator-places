@@ -134,7 +134,7 @@ public class Places.Indicator : Wingpanel.Indicator {
             }
         }
 
-        main_widget.get_child_at (0, 1).show_all ();
+        main_widget.show_all ();
     }
 
     private void on_mount_changed (GLib.Mount mount) {
