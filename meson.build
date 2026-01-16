@@ -39,6 +39,7 @@ shared_module (
   'src/Widgets/VolumeItem.vala',
   'src/Widgets/StandardItem.vala',
   'src/Enums/MountClass.vala',
+  'src/Utils.vala',
   gresource,
   dependencies: [
     dependency ('glib-2.0'),

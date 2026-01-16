@@ -19,7 +19,6 @@
 namespace Places.Widgets {
     public class Popover : Gtk.Grid {
 
-
         private string user_home;
         private Gtk.ListBox user_listbox;
         private Gtk.ListBox std_listbox;
@@ -72,9 +71,9 @@ namespace Places.Widgets {
             iter.iter_button.clicked.connect (() => {open_directory (file_from_path ("file:///"));});
             std_listbox.add (iter);
 
-            // iter = new ListItem (_("Recent"), "document-open-recent");
-            // iter.iter_button.clicked.connect (() => {open_directory (file_from_path ("recent:///"));});
-            // std_listbox.add (iter);
+            iter = new StandardItem (_("Recent"), "document-open-recent");
+            iter.iter_button.clicked.connect (() => {open_directory (file_from_path ("recent:///"));});
+            std_listbox.add (iter);
 
             iter = new StandardItem (_("Network"), "network-workgroup");
             iter.iter_button.clicked.connect (() => {open_directory (file_from_path ("network:///"));});
@@ -106,7 +105,7 @@ namespace Places.Widgets {
                         label = line.split (" ")[1];
                     }
 
-                    BookmarksItem iter = new BookmarksItem (label, get_user_icon (path));
+                    BookmarksItem iter = new BookmarksItem (label, Utils.get_user_icon (path));
                     iter.iter_button.clicked.connect (() => {open_directory (file_from_path (path));});
                     iter.set_tooltip_text (path);
                     user_listbox.add (iter);
@@ -141,35 +140,6 @@ namespace Places.Widgets {
             }
         }
 
-        private string get_user_icon (string path) {
-            if (path[0:3] == "smb" || path[0:3] == "ssh" || path[0:3] == "ftp" || path[0:3] == "net" || path[0:3] == "dav") {
-                return "folder-remote";
-            }
-
-            string unescaped_path = GLib.Uri.unescape_string (path);
-            string _path = unescaped_path.substring (7);
-
-            if (_path == GLib.Environment.get_user_special_dir (GLib.UserDirectory.DESKTOP)) {
-                return "user-desktop";
-            } else if (_path == GLib.Environment.get_user_special_dir (GLib.UserDirectory.DOCUMENTS)) {
-                return "folder-documents";
-            } else if (_path == GLib.Environment.get_user_special_dir (GLib.UserDirectory.DOWNLOAD)) {
-                return "folder-download";
-            } else if (_path == GLib.Environment.get_user_special_dir (GLib.UserDirectory.MUSIC)) {
-                return "folder-music";
-            } else if (_path == GLib.Environment.get_user_special_dir (GLib.UserDirectory.PICTURES)) {
-                return "folder-pictures";
-            } else if (_path == GLib.Environment.get_user_special_dir (GLib.UserDirectory.PUBLIC_SHARE)) {
-                return "folder-publicshare";
-            } else if (_path == GLib.Environment.get_user_special_dir (GLib.UserDirectory.TEMPLATES)) {
-                return "folder-templates";
-            } else if (_path == GLib.Environment.get_user_special_dir (GLib.UserDirectory.VIDEOS)) {
-                return "folder-videos";
-            } else {
-                return "folder";
-            }
-        }
-
         private void list_header_func (Gtk.ListBoxRow? before, Gtk.ListBoxRow? after) {
             ListItem? child = null;
             string? prev = null;
@@ -186,12 +156,17 @@ namespace Places.Widgets {
             }
 
             if (before == null || after == null || prev != next) {
-                Gtk.Label label = new Gtk.Label (GLib.Markup.printf_escaped ("<span font=\"13\">%s</span>", prev));
-                label.set_halign (Gtk.Align.CENTER);
+                Gtk.Label label = new Gtk.Label (GLib.Markup.printf_escaped ("<span font=\"13\">%s</span>", prev)) {
+                    margin_start = 5,
+                    margin_end = 5,
+                    margin_top = 5,
+                    margin_bottom = 10,
+                    halign = Gtk.Align.CENTER,
+                    use_markup = true
+                };
                 label.set_use_markup (true);
                 before.set_header (label);
-                label.margin = 5;
-                label.margin_bottom = 10;
+
             } else {
                 before.set_header (null);
             }

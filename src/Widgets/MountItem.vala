@@ -40,7 +40,8 @@ namespace Places.Widgets {
                 unmount_button.tooltip_text = _("Unmount %s").printf (mount.get_name ());
             }
 
-            overlay.add_overlay (unmount_button);
+            //overlay.add_overlay (unmount_button);
+            pack_end (unmount_button, false, false, 3);
         }
 
         private void on_button_clicked () {
