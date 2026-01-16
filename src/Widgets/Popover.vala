@@ -191,7 +191,7 @@ namespace Places.Widgets {
                 label.set_use_markup (true);
                 before.set_header (label);
                 label.margin = 5;
-                label.margin_bottom = 8;
+                label.margin_bottom = 10;
             } else {
                 before.set_header (null);
             }

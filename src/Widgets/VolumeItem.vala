@@ -23,25 +23,12 @@ namespace Places.Widgets {
         private GLib.Volume volume;
 
         public VolumeItem (GLib.Volume volume) {
-            string elem_image, _category_name;
-            switch (volume.get_identifier ("class")) {
-                case "device":
-                    elem_image = "drive-harddisk";
-                    _category_name = _("Devices");
-                    break;
-                case "network":
-                    elem_image = "folder-remote";
-                    _category_name = _("Network");
-                    break;
-                default:
-                    elem_image = "folder";
-                    _category_name = _("Other");
-                    break;
-            }
 
-            base (volume.get_name (), elem_image, volume.get_icon());
+            var vol_class = MountClass.from_string (volume.get_identifier ("class"));
 
-            category_name = _category_name;
+            base (volume.get_name (), vol_class.to_icon (), volume.get_icon());
+
+            category_name = vol_class.to_name ();
             this.volume = volume;
 
             iter_button.clicked.connect (on_button_clicked);
