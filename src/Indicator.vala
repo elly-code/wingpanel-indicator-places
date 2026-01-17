@@ -127,10 +127,10 @@ public class Places.Indicator : Wingpanel.Indicator {
             }
 
             GLib.File root = mount.get_default_location ();
-            if (!root.is_native ()) {
-                main_widget.add_mount (mount, Places.MountClass.NETWORK);
+            if (root.is_native ()) {
+                main_widget.add_mount (mount, Places.MountClass.DEVICE);
             } else {
-                main_widget.add_mount (mount, Places.MountClass.NETWORK); //DEVICES
+                main_widget.add_mount (mount, Places.MountClass.NETWORK);
             }
         }
 
