@@ -27,6 +27,7 @@ public class Places.Widgets.ListItem : Gtk.Box {
         orientation = Gtk.Orientation.HORIZONTAL;
         hexpand = true;
         valign = Gtk.Align.START;
+        margin_top = 5;
 
         iter_button = new Gtk.ToolButton (null, null);
         iter_button.set_can_focus (false);

@@ -21,6 +21,7 @@ public class Places.Widgets.Popover : Gtk.Box {
     private Gtk.ListBox user_listbox;
     private Gtk.ListBox std_listbox;
     private Gtk.ListBox vol_listbox;
+    private Gtk.ListBox netw_listbox;
 
     public signal void close_popover ();
 
@@ -42,6 +43,10 @@ public class Places.Widgets.Popover : Gtk.Box {
         vol_listbox.set_selection_mode (Gtk.SelectionMode.NONE);
         vol_listbox.set_header_func (list_header_func);
 
+        netw_listbox = new Gtk.ListBox ();
+        netw_listbox.set_selection_mode (Gtk.SelectionMode.NONE);
+        netw_listbox.set_header_func (list_header_func);
+
         // Home, Computer, etc...
         foreach (var item in StandardPlaces.CHOICES) {
             ListItem iter = new StandardItem (item);
@@ -62,6 +67,7 @@ public class Places.Widgets.Popover : Gtk.Box {
 
         left_pane.pack_start (std_listbox);
         left_pane.pack_start (vol_listbox);
+        left_pane.pack_start (netw_listbox);
 
         var right_pane = new Gtk.Box (VERTICAL, 10) {
             margin_top = 10,
@@ -155,7 +161,7 @@ public class Places.Widgets.Popover : Gtk.Box {
                 margin_start = 5,
                 margin_end = 5,
                 margin_top = 5,
-                margin_bottom = 10,
+                margin_bottom = 5,
                 halign = Gtk.Align.CENTER
             };
             label.get_style_context ().add_class (Granite.STYLE_CLASS_H3_LABEL);
@@ -168,6 +174,10 @@ public class Places.Widgets.Popover : Gtk.Box {
 
     public void clear_volumes () {
         foreach (Gtk.Widget item in vol_listbox.get_children ()) {
+            item.destroy ();
+        }
+
+        foreach (Gtk.Widget item in netw_listbox.get_children ()) {
             item.destroy ();
         }
     }
@@ -187,6 +197,10 @@ public class Places.Widgets.Popover : Gtk.Box {
             open_directory (mount.get_root ());
         });
 
-        vol_listbox.add (mount_item);
+        if (mount_class == Places.MountClass.DEVICE) {
+            vol_listbox.add (mount_item);
+        } else {
+            netw_listbox.add (mount_item);
+        }
     }
 }
