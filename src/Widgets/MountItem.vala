@@ -39,7 +39,7 @@ public class Places.Widgets.MountItem : ListItem {
         }
 
         //overlay.add_overlay (unmount_button);
-        pack_start (unmount_button);
+        add (unmount_button);
     }
 
     private void on_button_clicked () {

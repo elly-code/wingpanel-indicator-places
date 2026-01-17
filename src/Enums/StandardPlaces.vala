@@ -32,7 +32,7 @@ public enum Places.StandardPlaces {
         switch (this) {
             case HOME: return "user-home";
             case COMPUTER: return "computer";
-            case ROOT: return "computer";
+            case ROOT: return "drive-harddisk";
             case RECENT: return "document-open-recent";
             case NETWORK: return "network-workgroup";
             case TRASH: return "user-trash";

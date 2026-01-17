@@ -130,7 +130,7 @@ public class Places.Indicator : Wingpanel.Indicator {
             if (!root.is_native ()) {
                 main_widget.add_mount (mount, Places.MountClass.NETWORK);
             } else {
-                main_widget.add_mount (mount, Places.MountClass.NETWORK);
+                main_widget.add_mount (mount, Places.MountClass.NETWORK); //DEVICES
             }
         }
 

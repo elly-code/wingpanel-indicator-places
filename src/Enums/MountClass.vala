@@ -31,7 +31,7 @@ public enum Places.MountClass {
 
     public string to_name () {
         switch (this) {
-            case DEVICE: return _("Devices");
+            case DEVICE: return _("Storage");
             case NETWORK: return _("Network");
             default: return _("Other");
         }

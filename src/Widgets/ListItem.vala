@@ -25,9 +25,8 @@ public class Places.Widgets.ListItem : Gtk.Box {
 
     public ListItem (string elem_label, string elem_img, GLib.Icon? elem_icon = null) {
         orientation = Gtk.Orientation.HORIZONTAL;
-        margin_bottom = 5;
         hexpand = true;
-        valign = Gtk.Align.CENTER;
+        valign = Gtk.Align.START;
 
         iter_button = new Gtk.ToolButton (null, null);
         iter_button.set_can_focus (false);
@@ -49,7 +48,9 @@ public class Places.Widgets.ListItem : Gtk.Box {
             halign = Gtk.Align.START
         };
 
-        inner_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        inner_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 10) {
+            hexpand = true
+        };
         inner_box.pack_start (icon, false, false, 0);
         inner_box.pack_start (label, true, true, 0);
 
