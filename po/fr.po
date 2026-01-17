@@ -7,7 +7,7 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"POT-Creation-Date: 2025-10-17 19:44+0200\n"
+"POT-Creation-Date: 2026-01-17 18:29+0100\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Project-Id-Version: xplaces-indicator\n"
 "Report-Msgid-Bugs-To: \n"
@@ -15,64 +15,71 @@ msgstr ""
 "X-Poedit-Basepath: ../src\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: src/Widgets/BookmarksItem.vala:23
+#: src/Indicator.vala:52
+#: src/Widgets/StandardItem.vala:23
+msgid "Places"
+msgstr "Emplacements"
+
+#: src/Widgets/BookmarksItem.vala:22
 msgid "Bookmarks"
-msgstr "Signets"
-
-#: src/Widgets/MountItem.vala:28
-#: src/Widgets/VolumeItem.vala:30
-msgid "Devices"
-msgstr "Dispositifs"
-
-#. iter = new ListItem (_("Recent"), "document-open-recent");
-#. iter.iter_button.clicked.connect (() => {open_directory (file_from_path ("recent:///"));});
-#. std_listbox.add (iter);
-#: src/Widgets/MountItem.vala:32
-#: src/Widgets/Popover.vala:79
-#: src/Widgets/VolumeItem.vala:34
-msgid "Network"
-msgstr "Réseau"
+msgstr "Marque-Pages"
 
 #: src/Widgets/MountItem.vala:36
-#: src/Widgets/VolumeItem.vala:38
-msgid "Other"
-msgstr "Autres"
-
-#: src/Widgets/MountItem.vala:59
 msgid "Eject"
-msgstr "Ejecter"
+msgstr "Éjecter"
 
-#: src/Widgets/MountItem.vala:61
+#: src/Widgets/MountItem.vala:38
 msgid "Unmount"
 msgstr "Démonter"
 
-#: src/Widgets/MountItem.vala:77
+#: src/Widgets/MountItem.vala:64
 msgid "Error while ejecting device"
-msgstr "Erreur lors de l'éjection du dispositif"
+msgstr "Erreur lors de l'éjection du matériel"
 
-#: src/Widgets/MountItem.vala:92
+#: src/Widgets/MountItem.vala:79
 msgid "Error while unmounting volume"
 msgstr "Erreur lors du démontage du volume"
 
-#: src/Widgets/Popover.vala:63
-msgid "Home Folder"
-msgstr "Dossier d'accueil"
-
-#. iter = new ListItem (_("Computer"), "computer");
-#. iter.iter_button.clicked.connect (() => {open_directory (file_from_path ("computer:///"));});
-#. std_listbox.add (iter);
-#: src/Widgets/Popover.vala:71
-msgid "Root"
-msgstr "Racine"
-
-#: src/Widgets/Popover.vala:83
-msgid "Trash"
-msgstr "Poubelle"
-
-#: src/Widgets/VolumeItem.vala:59
+#: src/Widgets/VolumeItem.vala:45
 msgid "Error while mounting volume"
 msgstr "Erreur lors du montage du volume"
 
-#: src/Widgets/StandardItem.vala:23
-msgid "Places"
-msgstr "Lieux"
+#: src/Enums/MountClass.vala:34
+msgid "Storage"
+msgstr "Stockage"
+
+#: src/Enums/MountClass.vala:35
+#: src/Enums/StandardPlaces.vala:49
+msgid "Network"
+msgstr "Réseau"
+
+#: src/Enums/MountClass.vala:36
+msgid "Other"
+msgstr "Autres"
+
+#: src/Enums/StandardPlaces.vala:45
+msgid "Home Folder"
+msgstr "Dossier d'accueil"
+
+#: src/Enums/StandardPlaces.vala:46
+msgid "Computer"
+msgstr "Ordinateur"
+
+#: src/Enums/StandardPlaces.vala:47
+msgid "Root"
+msgstr "Racine"
+
+#: src/Enums/StandardPlaces.vala:48
+msgid "Recent"
+msgstr "Récents"
+
+#: src/Enums/StandardPlaces.vala:50
+msgid "Trash"
+msgstr "Poubelle"
+
+#: src/Enums/StandardPlaces.vala:51
+msgid "Unknown"
+msgstr "Inconnu"
+
+#~ msgid "Devices"
+#~ msgstr "Dispositifs"

@@ -7,7 +7,7 @@ msgstr ""
 "Last-Translator: Dirli <dirli1589@yahoo.com>\n"
 "MIME-Version: 1.0\n"
 "PO-Revision-Date: 2019-04-01 17:24+0300\n"
-"POT-Creation-Date: 2025-10-17 19:44+0200\n"
+"POT-Creation-Date: 2026-01-17 18:29+0100\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Project-Id-Version: xplaces-indicator\n"
 "Report-Msgid-Bugs-To: \n"
@@ -15,67 +15,76 @@ msgstr ""
 "X-Poedit-Basepath: ../src\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: src/Widgets/BookmarksItem.vala:23
-msgid "Bookmarks"
-msgstr "Закладки"
-
-#: src/Widgets/MountItem.vala:28
-#: src/Widgets/VolumeItem.vala:30
-msgid "Devices"
-msgstr "Устройства"
-
-#. iter = new ListItem (_("Recent"), "document-open-recent");
-#. iter.iter_button.clicked.connect (() => {open_directory (file_from_path ("recent:///"));});
-#. std_listbox.add (iter);
-#: src/Widgets/MountItem.vala:32
-#: src/Widgets/Popover.vala:79
-#: src/Widgets/VolumeItem.vala:34
-msgid "Network"
-msgstr "Сеть"
-
-#: src/Widgets/MountItem.vala:36
-#: src/Widgets/VolumeItem.vala:38
-msgid "Other"
-msgstr "Другие"
-
-#: src/Widgets/MountItem.vala:59
-msgid "Eject"
-msgstr "Извлечь"
-
-#: src/Widgets/MountItem.vala:61
-msgid "Unmount"
-msgstr "Размонтировать"
-
-#: src/Widgets/MountItem.vala:77
-msgid "Error while ejecting device"
-msgstr "Ошибка при извлечении устройства"
-
-#: src/Widgets/MountItem.vala:92
-msgid "Error while unmounting volume"
-msgstr "Ошибка при размонтировании Тома"
-
-#: src/Widgets/Popover.vala:63
-msgid "Home Folder"
-msgstr "Домашняя папка"
-
-#. iter = new ListItem (_("Computer"), "computer");
-#. iter.iter_button.clicked.connect (() => {open_directory (file_from_path ("computer:///"));});
-#. std_listbox.add (iter);
-#: src/Widgets/Popover.vala:71
-msgid "Root"
-msgstr "Компьютер"
-
-#: src/Widgets/Popover.vala:83
-msgid "Trash"
-msgstr "Мусор"
-
-#: src/Widgets/VolumeItem.vala:59
-msgid "Error while mounting volume"
-msgstr "Ошибка при монтирование Тома"
-
+#: src/Indicator.vala:52
 #: src/Widgets/StandardItem.vala:23
 msgid "Places"
 msgstr "Места"
+
+#: src/Widgets/BookmarksItem.vala:22
+msgid "Bookmarks"
+msgstr "Закладки"
+
+#: src/Widgets/MountItem.vala:36
+#, fuzzy
+msgid "Eject"
+msgstr "Извлечь"
+
+#: src/Widgets/MountItem.vala:38
+#, fuzzy
+msgid "Unmount"
+msgstr "Размонтировать"
+
+#: src/Widgets/MountItem.vala:64
+msgid "Error while ejecting device"
+msgstr "Ошибка при извлечении устройства"
+
+#: src/Widgets/MountItem.vala:79
+msgid "Error while unmounting volume"
+msgstr "Ошибка при размонтировании Тома"
+
+#: src/Widgets/VolumeItem.vala:45
+msgid "Error while mounting volume"
+msgstr "Ошибка при монтирование Тома"
+
+#: src/Enums/MountClass.vala:34
+msgid "Storage"
+msgstr "Хранение"
+
+#: src/Enums/MountClass.vala:35
+#: src/Enums/StandardPlaces.vala:49
+msgid "Network"
+msgstr "Сеть"
+
+#: src/Enums/MountClass.vala:36
+msgid "Other"
+msgstr "Другие"
+
+#: src/Enums/StandardPlaces.vala:45
+msgid "Home Folder"
+msgstr "Домашняя папка"
+
+#: src/Enums/StandardPlaces.vala:46
+msgid "Computer"
+msgstr "Компьютер"
+
+#: src/Enums/StandardPlaces.vala:47
+msgid "Root"
+msgstr "Компьютер"
+
+#: src/Enums/StandardPlaces.vala:48
+msgid "Recent"
+msgstr "Последние"
+
+#: src/Enums/StandardPlaces.vala:50
+msgid "Trash"
+msgstr "Мусор"
+
+#: src/Enums/StandardPlaces.vala:51
+msgid "Unknown"
+msgstr "Неизвестный"
+
+#~ msgid "Devices"
+#~ msgstr "Устройства"
 
 #~ msgid "Manage disks, volumes, places from the panel."
 #~ msgstr "Управление дисками, томами, местами из панели"

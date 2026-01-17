@@ -33,9 +33,9 @@ public class Places.Widgets.MountItem : ListItem {
         unmount_button.clicked.connect (on_button_clicked);
 
         if (mount.can_eject ()) {
-            unmount_button.tooltip_text = _("Eject %s").printf (mount.get_name ());
+            unmount_button.tooltip_text = _("Eject");
         } else {
-            unmount_button.tooltip_text = _("Unmount %s").printf (mount.get_name ());
+            unmount_button.tooltip_text = _("Unmount");
         }
 
         //overlay.add_overlay (unmount_button);
