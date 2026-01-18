@@ -33,12 +33,10 @@ namespace Places.Utils {
 
     public bool if_trash_empty () {
         var trash_path = GLib.Environment.get_home_dir () + "/.local/share/Trash/files/";
-
-        GLib.Dir trash;
         bool is_empty = true;
 
         try {
-            trash = GLib.Dir.open (trash_path);
+            var trash = GLib.Dir.open (trash_path);
             is_empty = (trash.read_name () == null);
 
         } catch (Error e) {
