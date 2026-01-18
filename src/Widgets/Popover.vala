@@ -33,20 +33,20 @@ public class Places.Widgets.Popover : Gtk.Box {
         spacing = 0;
 
         user_listbox = new Gtk.ListBox ();
-        user_listbox.set_selection_mode (Gtk.SelectionMode.SINGLE);
+        user_listbox.set_selection_mode (Gtk.SelectionMode.NONE);
         user_listbox.set_header_func (list_header_func);
 
         std_listbox = new Gtk.ListBox ();
-        std_listbox.set_selection_mode (Gtk.SelectionMode.SINGLE);
+        std_listbox.set_selection_mode (Gtk.SelectionMode.NONE);
         std_listbox.set_header_func (list_header_func);
         std_listbox.vexpand = false;
 
         vol_listbox = new Gtk.ListBox ();
-        vol_listbox.set_selection_mode (Gtk.SelectionMode.SINGLE);
+        vol_listbox.set_selection_mode (Gtk.SelectionMode.NONE);
         vol_listbox.set_header_func (list_header_func);
 
         netw_listbox = new Gtk.ListBox ();
-        netw_listbox.set_selection_mode (Gtk.SelectionMode.SINGLE);
+        netw_listbox.set_selection_mode (Gtk.SelectionMode.NONE);
         netw_listbox.set_header_func (list_header_func);
 
         // Home, Computer, etc...
