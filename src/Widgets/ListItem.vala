@@ -27,12 +27,11 @@ public class Places.Widgets.ListItem : Gtk.Box {
         orientation = Gtk.Orientation.HORIZONTAL;
         hexpand = true;
         valign = Gtk.Align.START;
-        margin_top = 5;
+        margin_top = 2;
+        margin_bottom = 3;
+
 
         iter_button = new Gtk.ToolButton (null, null);
-        iter_button.set_can_focus (false);
-
-        pack_start (iter_button, true, true, 0);
 
         Gtk.Image icon;
         if (elem_icon != null) {
@@ -56,6 +55,7 @@ public class Places.Widgets.ListItem : Gtk.Box {
         inner_box.pack_start (label, true, true, 0);
 
         iter_button.set_label_widget (inner_box);
+        pack_start (iter_button, true, true, 0);
     }
 
     public string get_item_category () {
