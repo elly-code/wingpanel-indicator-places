@@ -23,6 +23,8 @@ public class Places.Widgets.Popover : Gtk.Box {
     private Gtk.ListBox vol_listbox;
     private Gtk.ListBox netw_listbox;
 
+    private ListItem trash_item;
+
     public signal void close_popover ();
 
     public Popover () {
@@ -52,6 +54,10 @@ public class Places.Widgets.Popover : Gtk.Box {
             ListItem iter = new StandardItem (item);
             iter.iter_button.clicked.connect (() => {open_directory (file_from_path (item.to_path ()));});
             std_listbox.add (iter);
+
+            if (item == StandardPlaces.TRASH) {
+                trash_item = iter;
+            }
         };
 
         // My_Memes, My_Cat_Pictures, etc...
@@ -201,6 +207,14 @@ public class Places.Widgets.Popover : Gtk.Box {
             vol_listbox.add (mount_item);
         } else {
             netw_listbox.add (mount_item);
+        }
+    }
+
+    public void refresh_trashcan () {
+        if (Utils.if_trash_empty ()) {
+            trash_item.icon.set_from_icon_name ("user-trash", Gtk.IconSize.MENU);
+        } else {
+            trash_item.icon.set_from_icon_name ("user-trash-full", Gtk.IconSize.MENU);
         }
     }
 }

@@ -93,7 +93,7 @@ public class Places.Indicator : Wingpanel.Indicator {
         if (main_widget == null) {
             return;
         }
-
+        main_widget.refresh_trashcan ();
         main_widget.clear_volumes ();
 
         foreach (GLib.Drive drive in volume_monitor.get_connected_drives ()) {

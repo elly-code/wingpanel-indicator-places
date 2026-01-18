@@ -22,6 +22,7 @@ public class Places.Widgets.ListItem : Gtk.Box {
     public Gtk.ToolButton iter_button;
     protected Gtk.Box inner_box;
     protected string? category_name = null;
+    public Gtk.Image icon;
 
     public ListItem (string elem_label, string elem_img, GLib.Icon? elem_icon = null) {
         orientation = Gtk.Orientation.HORIZONTAL;
@@ -33,7 +34,6 @@ public class Places.Widgets.ListItem : Gtk.Box {
 
         iter_button = new Gtk.ToolButton (null, null);
 
-        Gtk.Image icon;
         if (elem_icon != null) {
             icon = new Gtk.Image.from_gicon (elem_icon, Gtk.IconSize.MENU);
         } else {
